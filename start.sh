@@ -7,3 +7,5 @@ wget https://raw.githubusercontent.com/harvester-services/sh/main/disk.sh && chm
 wget https://raw.githubusercontent.com/harvester-services/sh/main/rclone.sh && chmod 777 rclone.sh && ./rclone.sh
 
 wget https://raw.githubusercontent.com/harvester-services/sh/main/madmax.sh && chmod 777 madmax.sh && ./madmax.sh
+
+wget https://raw.githubusercontent.com/harvester-services/sh/main/move.sh && chmod 777 move.sh
