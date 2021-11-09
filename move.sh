@@ -1,5 +1,8 @@
 #!/bin/bash
 
+user=($(users))
+user=$user':'
+
 while true
 do
 
@@ -12,7 +15,7 @@ do
 
    account=${sa[i]}
 
-   if [[ $account =~ "madmax" ]] || [[ $account =~ "harvester" ]]
+   if [ $account = $user ]
    then
       echo
       echo $account
