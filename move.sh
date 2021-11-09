@@ -26,6 +26,7 @@ do
       sudo rclone move /mnt/disk1/ $account --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"
       echo
       echo "OK!"
+      date >> OK
    fi
 
    ((i++))
