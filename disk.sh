@@ -22,5 +22,4 @@ do
  sudo sed -i -e '$a'"$str" /etc/fstab
 
  ((i++))
-
 done
