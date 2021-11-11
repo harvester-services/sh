@@ -1,6 +1,6 @@
 #!/bin/bash
 
-user=($(users))
+user=$1
 user=$user':'
 
 mkdir $user
