@@ -1,7 +1,7 @@
 #!/bin/bash
 
-user=$1
-user=$user':'
+user=$(echo /home/harvester*)
+user=${user#/home/}':'
 
 mkdir $user
 
