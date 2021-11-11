@@ -52,6 +52,8 @@ for assinatura in "${subscription[@]}"
   echo "Set Subscription $assinatura"
   az account set --subscription $assinatura
 
+  j=1
+
   for regiao in "${location[@]}"
    do
      echo "Acessando Região $regiao da Subscription $assinatura"
@@ -61,18 +63,20 @@ for assinatura in "${subscription[@]}"
      echo "Criando Resource Group $RG na região $regiao da Subscription $assinatura"
      az group create --name $RG --location $regiao --only-show-errors -o none
          
-     user=harvester$(printf %02d $i)
+     user=harvester$(printf %02d $j)
          
      #nome=$user
      nome=$(date +"%d%m%Y%H%M%S")
 
-     echo "Criando VM $nome ($i) na região $regiao da Subscription $assinatura com user $user"
+     echo "Criando VM $nome na região $regiao da Subscription $assinatura com user $user"
      az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F8" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=$user --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512         
 
      echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
          
      az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group $RG --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"./start.sh"}'
      echo
+     
+     let "j++"
      
   done
 
