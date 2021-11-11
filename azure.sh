@@ -36,9 +36,7 @@ for assinatura in "${subscription[@]}"
 
      echo "Criando Resource Group $RG na região $regiao da Subscription $assinatura"
      az group create --name $RG --location $regiao --only-show-errors -o none
-     
-     for i in {0..4}
-      do 
+
          nome=$(date +"%d%m%Y%H%M%S")
 
          echo "Criando VM $nome ($i) na região $regiao da Subscription $assinatura"
@@ -61,9 +59,8 @@ for assinatura in "${subscription[@]}"
          cmd='"commandToExecute"':'"sh start.sh"'
          cmd="$cmd"
          
-         az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group $RG --no-wait --settings '{"fileUris": ["wget https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"sh start.sh"}'
+         az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group $RG --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"sh start.sh"}'
          echo
-     done
      
   done
 
