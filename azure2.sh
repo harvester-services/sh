@@ -57,7 +57,7 @@ for assinatura in "${subscription[@]}"
      echo
      
      let "j++"
-     let "K++"   
+     let "k++"   
      
   done
 
