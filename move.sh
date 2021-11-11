@@ -3,6 +3,8 @@
 user=($(users))
 user=$user':'
 
+mkdir $user
+
 while true
 do
 
