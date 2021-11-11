@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt remove --purge --auto-remove cmake
+sudo apt remove -y --purge --auto-remove cmake
 
 sudo apt update && \
 sudo apt install -y software-properties-common lsb-release && \
