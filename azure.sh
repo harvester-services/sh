@@ -40,7 +40,7 @@ for assinatura in "${subscription[@]}"
          nome=$(date +"%d%m%Y%H%M%S")
 
          echo "Criando VM $nome ($i) na região $regiao da Subscription $assinatura"
-         az vm create --resource-group $RG --name $nome --size "Standard_F8" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=azure --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512         
+         az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F8" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=azure --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512         
 
          CriandoVM=$(az vm list --query "[?name=='$nome'].{Nome:name}" -o tsv)     
          
