@@ -32,7 +32,7 @@ for assinatura in "${subscription[@]}"
 
      regiao=$(az account list-locations --query [$k].name -o tsv)
      
-     if [ $j > 40 ]
+     if [ $j -gt 40 ]
      then
         j=1
      fi
