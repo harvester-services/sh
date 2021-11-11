@@ -4,6 +4,8 @@ i=0
 j=1
 k=0
 
+regiao=1
+
 a[$i]="Login ok!"
 
  while [ "${a[$i]}" ]
