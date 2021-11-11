@@ -30,6 +30,7 @@ location[23]="brazilsouth"
  #az login -o table 
 
 i=0
+j=1
 
 a[$i]="Login ok!"
 
@@ -51,8 +52,6 @@ for assinatura in "${subscription[@]}"
   echo
   echo "Set Subscription $assinatura"
   az account set --subscription $assinatura
-
-  j=1
 
   for regiao in "${location[@]}"
    do
