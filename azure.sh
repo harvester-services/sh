@@ -55,6 +55,11 @@ for assinatura in "${subscription[@]}"
 
   for regiao in "${location[@]}"
    do
+   
+     if [ $j > 40 ]
+     then
+        j=1
+     fi
      echo "Acessando Região $regiao da Subscription $assinatura"
      
      RG=RG$(date +"%d%m%Y%H%M%S")
