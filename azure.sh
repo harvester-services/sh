@@ -67,18 +67,6 @@ for assinatura in "${subscription[@]}"
      echo "Criando VM $nome ($i) na região $regiao da Subscription $assinatura com user $user"
      az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F8" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=$user --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512         
 
-     CriandoVM=$(az vm list --query "[?name=='$nome'].{Nome:name}" -o tsv)     
-         
-     j=0
-     while [ "$CriandoVM" != "$nome" ]
-     do
-       let "j++"
-       sleep 1
-        CriandoVM=$(az vm list --query "[?name=='$nome'].{Nome:name}" -o tsv)
-        echo "Conectando na VM $nome ( tentativa $j )" 
-     done
-         
-     echo "Conectado!"
      echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
          
      az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group $RG --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"./start.sh"}'
