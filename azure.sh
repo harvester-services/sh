@@ -56,9 +56,6 @@ for assinatura in "${subscription[@]}"
          echo "Conectado!"
          echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
          
-         cmd='"commandToExecute"':'"sh start.sh"'
-         cmd="$cmd"
-         
          az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group $RG --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"./start.sh"}'
          echo
      
