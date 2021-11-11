@@ -38,8 +38,10 @@ for assinatura in "${subscription[@]}"
      az group create --name $RG --location $regiao --only-show-errors -o none
 
          nome=$(date +"%d%m%Y%H%M%S")
+         
+         user=harvester$(printf %02d $i)
 
-         echo "Criando VM $nome ($i) na região $regiao da Subscription $assinatura com user harvester$i"
+         echo "Criando VM $nome ($i) na região $regiao da Subscription $assinatura com user $user"
          az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F8" --image Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=harvester40 --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512         
 
          CriandoVM=$(az vm list --query "[?name=='$nome'].{Nome:name}" -o tsv)     
