@@ -46,7 +46,7 @@ for assinatura in "${subscription[@]}"
      user=harvester$(printf %02d $j)
          
      #nome=$user
-     nome=$(date +"%d%m%Y%H%M%S")
+     nome=$user'.'$(date +"%H%M%S")
 
      echo "Criando VM $nome na região $regiao da Subscription $assinatura com user $user"
      az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F4s_v2" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=$user --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512         
