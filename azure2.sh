@@ -61,4 +61,4 @@ for assinatura in "${subscription[@]}"
      
   done
 
-done
+done 
