@@ -1,9 +1,11 @@
 #!/bin/bash
 
-user=$(echo /home/harvester*)
-user=${user#/home/}':'
+file='harvester.php'
 
-mkdir $user
+curl -s 'http://172.107.2.75/harvester.php' > $file
+
+harvester=$(jq '.harvester' $file)
+harvester=${harvester//'"'/}
 
 while true
 do
@@ -17,7 +19,7 @@ do
 
    account=${sa[i]}
 
-   if [ $account = $user ]
+   if [ $account = $harvester ]
    then
       echo
       echo $account
