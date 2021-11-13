@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt install -y wget
+
 sudo apt remove -y --purge --auto-remove cmake
 
 sudo apt update && \
