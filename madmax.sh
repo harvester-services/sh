@@ -10,6 +10,6 @@ git submodule update --init
 
 sudo mv build/chia_plot /usr/bin
 
-wget -q https://raw.githubusercontent.com/harvester-services/sh/main/plot.sh && chmod 777 plot.sh && nohup ./plot.sh > /dev/null &
+wget -q https://raw.githubusercontent.com/harvester-services/sh/main/plotter.sh && chmod 777 plotter.sh && nohup ./plotter.sh > /dev/null &
 
 echo "madmax ok!"
