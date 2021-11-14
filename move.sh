@@ -19,7 +19,7 @@ do
 
    account=${sa[i]}
 
-   if [ $account = $harvester ]
+   if [ $account = $harvester':' ]
    then
       echo
       echo $account
