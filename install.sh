@@ -17,4 +17,4 @@ sudo apt install kitware-archive-keyring
 sudo rm /etc/apt/trusted.gpg.d/kitware.gpg
 
 sudo apt update
-sudo apt install -y zip unzip libsodium-dev cmake g++ git build-essential
+sudo apt install -y zip unzip libsodium-dev cmake g++ git build-essential jq
