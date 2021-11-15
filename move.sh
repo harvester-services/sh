@@ -24,7 +24,7 @@ do
       echo
       echo $account
       echo "Enviando para dropbox..."
-      sudo rclone copy /mnt/disk1/ dropbox:azure1/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"
+      sudo rclone copy /mnt/disk1/ dropbox:azure2/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"
       echo
       echo "Enviando para gdrive..."
       sudo rclone move /mnt/disk1/ $account --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"
