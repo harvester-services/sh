@@ -1,36 +1,10 @@
 #!/bin/bash
 
-#location=$(az account list-locations --query [*].name -o tsv)
-
-location[1]="centralus"
-location[2]="uksouth"
-location[3]="ukwest"
-location[4]="australiasoutheast"
-location[5]="canadacentral"
-location[6]="southcentralus"
-location[7]="westcentralus"
-location[8]="eastus"
-location[9]="eastus2"
-location[10]="westus"
-location[11]="westus2"
-location[12]="koreacentral"
-location[13]="eastasia"
-location[14]="southeastasia"
-location[15]="norwayeast"
-location[16]="northeurope"
-location[17]="southafricanorth"
-location[18]="francecentral"
-location[19]="germanywestcentral"
-location[20]="koreasouth"
-location[21]="australiacentral"
-location[22]="australiaeast"
-location[23]="brazilsouth"
-
- #az account clear
- #az login -o table 
-
 i=0
 j=1
+k=0
+
+regiao=1
 
 a[$i]="Login ok!"
 
@@ -53,10 +27,12 @@ for assinatura in "${subscription[@]}"
   echo "Set Subscription $assinatura"
   az account set --subscription $assinatura
 
-  for regiao in "${location[@]}"
-   do
-   
-     if [ $j > 40 ]
+  while [ $regiao ]
+  do
+
+     regiao=$(az account list-locations --query [$k].name -o tsv)
+     
+     if [ $j -gt 40 ]
      then
         j=1
      fi
@@ -66,22 +42,20 @@ for assinatura in "${subscription[@]}"
 
      echo "Criando Resource Group $RG na região $regiao da Subscription $assinatura"
      az group create --name $RG --location $regiao --only-show-errors -o none
-         
-     user=harvester$(printf %02d $j)
-         
-     #nome=$user
-     nome=$(date +"%d%m%Y%H%M%S")
 
-     echo "Criando VM $nome na região $regiao da Subscription $assinatura com user $user"
-     az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F8" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=$user --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512         
+     nome=VM$(date +"%d%m%Y%H%M%S")
+
+     echo "Criando VM $nome na região $regiao da Subscription $assinatura"
+     az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F4s_v2" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=azure --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512 --priority Spot         
 
      echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
-         
      az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group $RG --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"./start.sh"}'
-     echo
-     
+
      let "j++"
+     let "k++"  
+     
+     echo
      
   done
 
-done
+done 
