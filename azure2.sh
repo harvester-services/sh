@@ -45,7 +45,7 @@ for assinatura in "${subscription[@]}"
 
      nome=VM$(date +"%d%m%Y%H%M%S")
 
-     echo "Criando VM $nome na região $regiao da Subscription $assinatura com user $user"
+     echo "Criando VM $nome na região $regiao da Subscription $assinatura
      az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F4s_v2" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=azure --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512         
 
      echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
