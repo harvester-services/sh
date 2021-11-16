@@ -22,12 +22,11 @@ do
    if [ $account = $harvester':' ]
    then
       echo
-      echo $account
-      echo "Enviando para dropbox..."
-      sudo rclone copy /mnt/disk1/ dropbox:azure3/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot" --log-level INFO --log-file=rclone.log
-      echo
       echo "Enviando para gdrive..."
-      sudo rclone move /mnt/disk1/ $account --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"
+      sudo rclone copy /mnt/disk1/ $account --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot" --log-level INFO --log-file=rclone_gdrive.log      
+      echo
+      echo "Enviando para dropbox..."
+      sudo rclone move /mnt/disk1/ dropbox:azure/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot" --log-level INFO --log-file=rclone_dropbox.log
       echo
       echo "OK!"
       date >> OK
