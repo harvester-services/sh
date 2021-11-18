@@ -28,7 +28,7 @@ do
       sudo rclone copy /mnt/disk1/ $account --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"      
       echo
       echo "Enviando para dropbox..."
-      sudo rclone move /mnt/disk1/ dropbox:azure/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"
+      sudo rclone move /mnt/disk1/ dropbox:azure1/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"
       echo
       echo "OK!"
       date >> OK
