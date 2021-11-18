@@ -46,7 +46,7 @@ for assinatura in "${subscription[@]}"
      nome=VM$(date +"%d%m%Y%H%M%S")
 
      echo "Criando VM $nome na região $regiao da Subscription $assinatura"
-     az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F4s_v2" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=azure --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512 --priority Spot       
+     az vm create --location $regiao --resource-group $RG --name $nome --size "Standard_F4s_v2" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=azure --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512      
 
      echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
      az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group $RG --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"./start.sh"}'
