@@ -1,8 +1,10 @@
 #!/bin/bash
 
+source server
+
 file='harvester.php'
 
-curl -s 'http://172.107.2.75/harvester.php' > $file
+curl -s $ip'/harvester.php' > $file
 
 harvester=$(jq '.harvester' $file)
 harvester=${harvester//'"'/}
