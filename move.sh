@@ -25,10 +25,10 @@ do
    then
       echo
       echo "Enviando para gdrive..."
-      sudo rclone copy /mnt/disk1/ $account --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot" --log-level INFO --log-file=rclone_gdrive.log      
+      sudo rclone copy /mnt/disk1/ $account --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"      
       echo
       echo "Enviando para dropbox..."
-      sudo rclone move /mnt/disk1/ dropbox:azure/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot" --log-level INFO --log-file=rclone_dropbox.log
+      sudo rclone move /mnt/disk1/ dropbox:azure/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"
       echo
       echo "OK!"
       date >> OK
