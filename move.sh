@@ -28,7 +28,7 @@ do
       sudo rclone copy /mnt/disk1/ $account --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot" --log-level ERROR --log-file=/root/.config/rclone/gdrive.log     
       echo
       echo "Enviando para dropbox..."
-      sudo rclone move /mnt/disk1/ dropbox:plots/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot" --log-level ERROR --log-file=/root/.config/rclone/dropbox.log 
+      sudo rclone move /mnt/disk1/ dropbox:azure/ --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot" --log-level ERROR --log-file=/root/.config/rclone/dropbox.log 
       echo
       echo "OK!"
       date >> OK
