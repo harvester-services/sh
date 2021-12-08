@@ -82,7 +82,7 @@ for assinatura in "${subscription[@]}"
      echo
 
      echo "Criando Pool no Lote $nome $count2/${#location[@]} em $regiao da Subscription $assinatura $count1/${#subscription[@]}  > $perc% Concluído"
-     az batch pool create --json-file Pool.json --only-show-errors -o none
+     az batch pool create --json-file pool.json --only-show-errors -o none
      echo
 
      echo "Lote $nome $count2/${#location[@]} em $regiao da Subscription $assinatura $count1/${#subscription[@]} ok!  > $perc% Concluído"
