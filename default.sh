@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo rclone size default:
+echo
+
 while true
 do
 
