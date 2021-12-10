@@ -46,15 +46,15 @@ for assinatura in "${subscription[@]}"
      let "perc= $(( $count * 100 / (${#regiao[@]} * ${#subscription[@]}) ))"
 
      echo "Criando Lote $nome $count2/${#regiao[@]} em $regiao da Subscription $assinatura $count1/${#subscription[@]}  > $perc% Concluído"
-     #az batch account create --resource-group GrupoLote --name $nome --location $regiao --only-show-errors -o none
+     az batch account create --resource-group GrupoLote --name $nome --location $regiao --only-show-errors -o none
      echo
 
      echo "Acessando Lote $nome $count2/${#regiao[@]} em $regiao da Subscription $assinatura $count1/${#subscription[@]}  > $perc% Concluído"
-     #az batch account login --resource-group GrupoLote --name $nome --shared-key-auth --only-show-errors -o none
+     az batch account login --resource-group GrupoLote --name $nome --shared-key-auth --only-show-errors -o none
      echo
 
      echo "Criando Pool no Lote $nome $count2/${#regiao[@]} em $regiao da Subscription $assinatura $count1/${#subscription[@]}  > $perc% Concluído"
-     #az batch pool create --json-file pool.json --only-show-errors -o none
+     az batch pool create --json-file pool.json --only-show-errors -o none
      echo
 
      echo "Lote $nome $count2/${#regiao[@]} em $regiao da Subscription $assinatura $count1/${#subscription[@]} ok!  > $perc% Concluído"
