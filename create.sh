@@ -29,6 +29,11 @@ for assinatura in "${subscription[@]}"
   echo "Set Subscription $assinatura"
   az account set --subscription $assinatura
   
+  echo
+  echo "Criando Resource Group da Subscription $assinatura"
+  az group create --name GrupoLote --location westeurope --only-show-errors -o none
+  echo  
+  
   count2=1
 
   while [ $regiao ]
