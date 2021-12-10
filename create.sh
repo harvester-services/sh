@@ -28,6 +28,8 @@ for assinatura in "${subscription[@]}"
   echo
   echo "Set Subscription $assinatura"
   az account set --subscription $assinatura
+  
+  count2=1
 
   while [ $regiao ]
   do
