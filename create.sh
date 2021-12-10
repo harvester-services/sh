@@ -33,9 +33,9 @@ for assinatura in "${subscription[@]}"
 
      nome=$(date +"%d%m%Y%H%M%S")
 
-     let "perc= $(( $count * 100 / (${#location[@]} * ${#subscription[@]}) ))"
+     let "perc= $(( $count * 100 / (${#regiao[@]} * ${#subscription[@]}) ))"
 
-     echo "Criando Lote $nome $count2/${#location[@]} em $regiao da Subscription $assinatura $count1/${#subscription[@]}  > $perc% Concluído"
+     echo "Criando Lote $nome $count2/${#regiao[@]} em $regiao da Subscription $assinatura $count1/${#subscription[@]}  > $perc% Concluído"
      az batch account create --resource-group myResourceGroup --name $nome --location $regiao --only-show-errors -o none
      echo
 
