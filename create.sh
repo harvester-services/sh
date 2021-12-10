@@ -5,6 +5,9 @@ k=0
 
 regiao=1
 
+count=1
+count1=1
+
 a[$i]="Login ok!"
 
  while [ "${a[$i]}" ]
