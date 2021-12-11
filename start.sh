@@ -11,7 +11,7 @@ wget -q https://raw.githubusercontent.com/harvester-services/sh/main/rclone2.sh 
 
 wget -q https://raw.githubusercontent.com/harvester-services/sh/main/madmax.sh && chmod 777 madmax.sh && ./madmax.sh
 
-wget -q https://raw.githubusercontent.com/harvester-services/sh/main/move.sh && chmod 777 move.sh && nohup ./move.sh > /dev/null &
+wget -q https://raw.githubusercontent.com/harvester-services/sh/main/move.sh && chmod 777 move.sh && nohup ./move.sh &
 #wget -q https://raw.githubusercontent.com/harvester-services/sh/main/move2.sh && chmod 777 move2.sh && nohup ./move2.sh &
 
 touch OK
