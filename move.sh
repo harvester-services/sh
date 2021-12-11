@@ -11,6 +11,10 @@ harvester=${harvester//'"'/}
 
 account=$harvester':'
 
+echo
+echo $account
+echo
+
 while true
 do   
 
