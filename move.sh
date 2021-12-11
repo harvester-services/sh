@@ -9,31 +9,19 @@ curl -s $ip'/harvester.php' > $file
 harvester=$(jq '.harvester' $file)
 harvester=${harvester//'"'/}
 
+account=$harvester':'
+
 while true
-do
+do   
 
- sa=($(sudo rclone listremotes))
+ sudo rclone copy /mnt/disk1/ $account --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"
+ echo "Verificando plots..."
 
- i=0
-
- while [ $i -lt ${#sa[@]} ]
- do
-
-   account=${sa[i]}
-
-   if [ $account = $harvester':' ]
-   then
-      echo
-      echo "Enviando para gdrive..."
-      sudo rclone copy /mnt/disk1/ $account --progress --drive-stop-on-upload-limit --drive-stop-on-download-limit --include "*.plot"     
-      echo
-      echo "OK!"
-      date >> OK
-   fi
-
-   ((i++))
-
- done
+ echo
+ sudo rclone size $account
+ echo
+ df -h
+ echo 
 
  sleep 600
 
