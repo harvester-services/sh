@@ -27,6 +27,9 @@ for assinatura in "${subscription[@]}"
   echo "Set Subscription $assinatura"
   az account set --subscription $assinatura
 
+  echo "Criando Resource Group na Subscription $assinatura"
+  az group create --name GrupoVM --location $regiao --only-show-errors -o none  
+
   while [ $regiao ]
   do
 
@@ -37,11 +40,6 @@ for assinatura in "${subscription[@]}"
         j=1
      fi
      echo "Acessando Região $regiao da Subscription $assinatura"
-     
-     RG=RG$(date +"%d%m%Y%H%M%S")
-
-     echo "Criando Resource Group $RG na região $regiao da Subscription $assinatura"
-     az group create --name $RG --location $regiao --only-show-errors -o none
 
      nome=VM$(date +"%d%m%Y%H%M%S")
 
