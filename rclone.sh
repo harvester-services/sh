@@ -15,3 +15,4 @@ sudo wget https://github.com/harvester-services/file/raw/main/sa.zip && sudo unz
 
 echo
 echo "rclone ok!"
+echo
