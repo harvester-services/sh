@@ -51,11 +51,11 @@ for assinatura in "${subscription[@]}"
      
      echo
      echo "Anexando disco 0"
-     az vm disk attach --enable-write-accelerator --lun 0 --disk disk0 --new --resource-group GrupoVM --size-gb 512 --sku Standard_LRS --vm-name $nome --only-show-errors
+     az vm disk attach --enable-write-accelerator --lun 0 --disk disk0 --new --resource-group GrupoVM --size-gb 512 --sku Premium_LRS --vm-name $nome --only-show-errors
 
      echo
      echo "Anexando disco 1"
-     az vm disk attach --enable-write-accelerator --lun 1 --disk disk1 --new --resource-group GrupoVM --size-gb 512 --sku Standard_LRS --vm-name $nome --only-show-errors
+     az vm disk attach --enable-write-accelerator --lun 1 --disk disk1 --new --resource-group GrupoVM --size-gb 512 --sku Premium_LRS --vm-name $nome --only-show-errors
 
      echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
      az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group GrupoVM --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"./start.sh"}' --no-wait
