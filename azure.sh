@@ -44,9 +44,18 @@ for assinatura in "${subscription[@]}"
      echo "Acessando Região $regiao da Subscription $assinatura"
 
      nome=VM$(date +"%d%m%Y%H%M%S")
-
+     
+     echo
      echo "Criando VM $nome na região $regiao da Subscription $assinatura"
-     az vm create --location $regiao --resource-group GrupoVM --name $nome --size "Standard_F4s_v2" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=azure --admin-password=qpalzm794613Q! --data-disk-sizes-gb 512 512      
+     az vm create --location $regiao --resource-group GrupoVM --name $nome --size "Standard_F4s_v2" --image UbuntuLTS --public-ip-sku Standard --accelerated-networking=true --authentication-type=password --admin-username=azure --admin-password=qpalzm794613Q!     
+     
+     echo
+     echo "Anexando disco 0"
+     az vm disk attach --enable-write-accelerator --lun 0 --disk disk0 --new --resource-group GrupoVM --size-gb 512 --sku Standard_LRS --vm-name $nome --only-show-errors
+
+     echo
+     echo "Anexando disco 1"
+     az vm disk attach --enable-write-accelerator --lun 1 --disk disk1 --new --resource-group GrupoVM --size-gb 512 --sku Standard_LRS --vm-name $nome --only-show-errors
 
      echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
      az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group GrupoVM --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"./start.sh"}' --no-wait
