@@ -58,7 +58,7 @@ for assinatura in "${subscription[@]}"
      az vm disk attach --lun 1 --name disk1 --new --resource-group GrupoVM --size-gb 512 --sku Premium_LRS --vm-name $nome
 
      echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
-     az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group GrupoVM --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"./start.sh"}'
+     az vm extension set --publisher Microsoft.Azure.Extensions --version 2.0 --name CustomScript --vm-name $nome --resource-group GrupoVM --settings '{"fileUris": ["https://raw.githubusercontent.com/harvester-services/sh/main/start.sh"],"commandToExecute":"./start.sh"}' --no-wait
 
      let "j++"
      let "k++"  
