@@ -69,3 +69,5 @@ for assinatura in "${subscription[@]}"
   done
 
 done 
+
+#--data-disk-sizes-gb 512 512
