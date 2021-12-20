@@ -51,11 +51,11 @@ for assinatura in "${subscription[@]}"
      
      echo
      echo "Anexando disco 0"
-     az vm disk attach --lun 0 --name disk0 --new --resource-group GrupoVM --size-gb 512 --sku Premium_LRS --vm-name $nome
+     az vm disk attach --lun 0 --name $nome_disk0 --new --resource-group GrupoVM --size-gb 512 --sku Premium_LRS --vm-name $nome
 
      echo
      echo "Anexando disco 1"
-     az vm disk attach --lun 1 --name disk1 --new --resource-group GrupoVM --size-gb 512 --sku Premium_LRS --vm-name $nome
+     az vm disk attach --lun 1 --name $nome_disk1 --new --resource-group GrupoVM --size-gb 512 --sku Premium_LRS --vm-name $nome
 
      echo
      echo "Criando Extension da VM $nome na região $regiao da Subscription $assinatura"
